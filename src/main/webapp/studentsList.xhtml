@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+    <h:outputStylesheet library="css" name="bootstrap.min.css" />     
+    <title>ESMT Java EE</title>
+    <style type="text/css">
+        .tableUpdated {
+        	width: 90% !important;
+        	margin: 17px 58px 0 !important;
+        }
+        .btnSpace {
+        	margin: 17px;
+        }     
+    </style>
+</h:head>
+
+<h:body>
+
+	<center>
+		<h2>
+			<h:outputText value="Student List" />
+		</h2>
+	</center>
+	<h:form id="studentForm">
+		<h:dataTable id="studentTable" binding="#{table}"
+			value="#{studentControler.getListStudent()}" var="line"
+			class="table table-striped table-hover table-bordered tableUpdated">
+			 
+			<h:column>
+				<f:facet name="header">LastName</f:facet>
+				<h:outputText value="#{line.lastName}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">FirstName</f:facet>
+				<h:outputText value="#{line.firstName}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Adress</f:facet>
+				<h:outputText value="#{line.adress}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Tyepe</f:facet>
+				<h:outputText value="#{line.type}" />
+			</h:column>
+			
+	
+			<h:column>
+				 
+				<f:facet name="header">Update</f:facet>
+				<h:commandButton action="#{studentControler.editStudent(line)}"
+					value="Update" class="btn btn-primary" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Delete</f:facet>
+				<h:commandButton action="#{studentControler.deleteStudent(line)}"
+					value="Delete" class="btn btn-danger" />
+			</h:column>
+			
+		</h:dataTable>
+		
+		<center>
+			<f:param name="id" value="#{line.idStudent}" />
+			<h:commandButton action="createStudent.xhtml?faces-redirect=true"
+				value="Create New User" class="btn btn-success btnSpace" />
+		</center>
+		
+	</h:form>
+</h:body>
+</html>

@@ -1,0 +1,7 @@
+com\uadb\rest\StudentRs.class
+com\uadb\service\StudentService.class
+com\uadb\controler\StudentControler.class
+com\uadb\entities\Student.class
+com\uadb\utils\AbstractPersistent.class
+com\uadb\utils\StudenType.class
+com\uadb\rest\ApplicationRest.class
